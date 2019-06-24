@@ -1,4 +1,4 @@
-package studios.hawkeyegame.hackweekbot.command;
+package studios.hawkeyegame.hackweekbot.core.command;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.DiscordEntity;

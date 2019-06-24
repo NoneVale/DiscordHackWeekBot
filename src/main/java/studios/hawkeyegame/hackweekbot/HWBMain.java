@@ -1,8 +1,8 @@
 package studios.hawkeyegame.hackweekbot;
 
 import org.javacord.api.DiscordApi;
-import studios.hawkeyegame.hackweekbot.command.CommandManager;
-import studios.hawkeyegame.hackweekbot.listener.ListenerManager;
+import studios.hawkeyegame.hackweekbot.core.command.CommandManager;
+import studios.hawkeyegame.hackweekbot.core.listener.ListenerManager;
 
 public class HWBMain {
 

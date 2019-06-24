@@ -1,4 +1,4 @@
-package studios.hawkeyegame.hackweekbot.command;
+package studios.hawkeyegame.hackweekbot.core.command;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

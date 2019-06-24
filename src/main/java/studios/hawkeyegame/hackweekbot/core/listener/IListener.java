@@ -1,4 +1,4 @@
-package studios.hawkeyegame.hackweekbot.listener;
+package studios.hawkeyegame.hackweekbot.core.listener;
 
 import org.javacord.api.DiscordApi;
 import studios.hawkeyegame.hackweekbot.HWBMain;

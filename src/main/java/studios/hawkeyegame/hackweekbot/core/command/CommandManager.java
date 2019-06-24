@@ -1,4 +1,4 @@
-package studios.hawkeyegame.hackweekbot.command;
+package studios.hawkeyegame.hackweekbot.core.command;
 
 import com.google.common.collect.Maps;
 import org.javacord.api.entity.DiscordEntity;
