@@ -1,22 +1,33 @@
-package studios.hawkeyegame.hackweekbot.core.listener;
+package studios.hawkeyegame.hackweekbot.core.plugin;
 
 import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.channel.Channel;
-import org.javacord.api.entity.permission.Role;
 import studios.hawkeyegame.hackweekbot.HWBMain;
 import studios.hawkeyegame.hackweekbot.core.command.CommandManager;
+import studios.hawkeyegame.hackweekbot.core.listener.ListenerManager;
 import studios.hawkeyegame.hackweekbot.core.servers.registry.ServerRegistry;
 import studios.hawkeyegame.hackweekbot.core.settings.SettingsModel;
 import studios.hawkeyegame.hackweekbot.core.users.registry.UserRegistry;
 
-public interface IListener {
+public interface IPlugin {
 
-    default DiscordApi getDiscordBot() {
-        return HWBMain.getDiscordBot();
-    }
+    void onEnable();
+
+    void onDisable();
+
+    boolean isEnabled();
+
+    String getName();
 
     default CommandManager getCommandManager() {
         return HWBMain.getCommandManager();
+    }
+
+    default ListenerManager getListenerManager() {
+        return HWBMain.getListenerManager();
+    }
+
+    default DiscordApi getDiscordBot() {
+        return HWBMain.getDiscordBot();
     }
 
     default ServerRegistry getServerRegistry() {
@@ -29,13 +40,5 @@ public interface IListener {
 
     default SettingsModel getConfig() {
         return HWBMain.getConfig();
-    }
-
-    default Role getRole(String id) {
-        return HWBMain.getRole(id);
-    }
-
-    default Channel getChannel(String id) {
-        return HWBMain.getChannel(id);
     }
 }

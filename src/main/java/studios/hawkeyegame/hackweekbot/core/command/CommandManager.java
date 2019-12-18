@@ -4,8 +4,12 @@ import com.google.common.collect.Maps;
 import org.javacord.api.entity.DiscordEntity;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageAuthor;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentMap;
 
 public class CommandManager {
@@ -53,7 +57,23 @@ public class CommandManager {
         return cmds.values();
     }
 
-    public void callCommand(DiscordEntity entity, Command command, Message message, TextChannel channel, String[] args) {
-        command.getExecutor().onCommand(entity, command, message, channel, args);
+    public boolean callCommand(DiscordEntity entity, Command command, Message message, TextChannel channel, String[] args) {
+        if (entity instanceof MessageAuthor) {
+            MessageAuthor author = (MessageAuthor) entity;
+            if (author.isUser()) {
+                Optional<User> opUser = author.asUser();
+                if (opUser.isPresent()) {
+                    User user = opUser.get();
+
+                    Optional<Server> opServer = message.getServer();
+                    if (opServer.isPresent()) {
+                        Server server = opServer.get();
+                        return command.getExecutor().onCommand(user, command, message, channel, server, args);
+                    } else
+                        return command.getExecutor().onCommand(user, command, message, channel, args);
+                }
+            }
+        }
+        return false;
     }
 }

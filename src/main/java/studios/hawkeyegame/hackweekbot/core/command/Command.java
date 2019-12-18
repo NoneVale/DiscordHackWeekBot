@@ -11,12 +11,14 @@ public class Command {
     private CommandExecutor executor;
     private List<String> aliases;
     private String description;
+    private long cooldown;
 
     public Command(String cmd) {
         command = cmd;
         executor = null;
         aliases = Lists.newArrayList();
         description = "";
+        cooldown = 0;
     }
 
     public String getCommand() {
@@ -52,5 +54,13 @@ public class Command {
     public Command setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    public long getCooldown() {
+        return cooldown;
+    }
+
+    public void setCooldown(long cooldown) {
+        this.cooldown = cooldown;
     }
 }
